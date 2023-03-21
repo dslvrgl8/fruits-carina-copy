@@ -1,16 +1,21 @@
 <%- include('../header.ejs', {name: "Create a new fruit"}) %>
-    <form method="POST" action="/postRoute">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-        <br>
-        <label for="color">Color:</label>
-        <input type="text" name="color" id="color">
-        <br>
-        <label for="readyToEat">Is it ready to eat? </label>
-        <input type="text" name="readyToEat" id="readyToEat">
-        <br>
-        <label for="image">Image URL: </label>
-        <input type="text" name="image" id="image">
-    </form>
+<!-- method is what to on the server...the me
+    action is the route on the server
+-->
+<form method="POST" action="/fruits">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name">
+    <br>
+    <label for="color">Color:</label>
+    <input type="text" name="color" id="color">
+    <br>
+    <label for="readyToEat">Is it ready to eat? </label>
+    <input type="checkbox" name="readyToEat" id="readyToEat">
+    <br>
+    <label for="image">Image URL: </label>
+    <input type="text" name="image" id="image">
+
+    <input type="submit" value="Create Fruit" />
+</form>
 </body>
 </html>
