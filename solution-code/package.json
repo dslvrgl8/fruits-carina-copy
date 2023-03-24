@@ -46,6 +46,7 @@
     "jake": "^10.8.5",
     "media-typer": "^0.3.0",
     "merge-descriptors": "^1.0.1",
+    "method-override": "^3.0.0",
     "methods": "^1.1.2",
     "mime": "^1.6.0",
     "mime-db": "^1.52.0",
@@ -77,7 +78,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

@@ -16,7 +16,7 @@ router.get('/new', (req, res) => {
     res.render("fruits/new.ejs")
 })
 
-router.get('/fruits/:id', (req, res) => {
+router.get('/:id', (req, res) => {
     console.log(req.params);
     // console.log(fruits);
     const fruit = fruits[req.params.id];
@@ -34,4 +34,10 @@ router.post('/', (req, res) => {
 	// redirect to the INDEX route for fruits
 	res.redirect('/fruits');
 });
+
+// DELETE
+router.delete('/:indexOfFruitsArray', (req, res) => {
+    fruits.splice( req.params.indexOfFruitsArray, 1);
+    res.redirect('/fruits');
+})
 module.exports = router;
