@@ -1,0 +1,16 @@
+<%- include('./header.ejs', {name: 'update fruit'}) %>
+<h1>Edit Fruit Page</h1>
+<form action="/fruits/<%=index%>?_method=PUT" method="POST">
+    Name: <input type="text" name="name" value = "<%= fruit.name%>">
+    Color: <input type="text" name="color" value="<%=fruit.color%>"/>
+    Is Ready To Eat: <input type="checkbox" name="readyToEat"
+    <% if(fruit.readyToEat === true){ %>
+    checked
+    <% } %>
+    />
+    <br/>
+    <input type="submit" name="" value="Submit Changes"/>
+    </form>
+</body>
+</html>
+</form>

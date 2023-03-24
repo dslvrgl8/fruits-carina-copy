@@ -1,28 +1,30 @@
 const express = require('express');
+const { fruits } = require('../models/Fruits');
 const router = express.Router();
 
 //        .post()  .get()   .put()   .delete()
 // CRUD...Create, Read, Update, Delete
-//        NEW     INDEX  UPDATE  DELETE
+//        NEW    INDEX/SHOW  UPDATE  DELETE
 
-// INDEX ...aka READ
 // INDEX ...return all
+// /fruits/
 router.get('/', (req, res) => {
-    res.render('fruits/index.ejs', {fruits: fruits})
-})
+	res.render('fruits/index.ejs', { fruits: fruits });
+});
 
 // FORM TO CREATE A NEW FRUIT
 router.get('/new', (req, res) => {
-    res.render("fruits/new.ejs")
-})
+	res.render('fruits/new.ejs');
+});
 
+// SHOW ...return one item
 router.get('/:id', (req, res) => {
-    console.log(req.params);
-    // console.log(fruits);
-    const fruit = fruits[req.params.id];
-    console.log(fruit);
-    res.render("fruits/show.ejs", {fruit: fruit});
-})
+	console.log(req.params);
+	// console.log(fruits);
+	const fruit = fruits[req.params.id];
+	console.log(fruit);
+	res.render('fruits/show.ejs', { fruit: fruit });
+});
 
 // POST
 router.post('/', (req, res) => {
@@ -37,7 +39,23 @@ router.post('/', (req, res) => {
 
 // DELETE
 router.delete('/:indexOfFruitsArray', (req, res) => {
-    fruits.splice( req.params.indexOfFruitsArray, 1);
-    res.redirect('/fruits');
+	fruits.splice(req.params.indexOfFruitsArray, 1);
+	res.redirect('/fruits')
+});
+
+// EDIT PAGE
+router.get('/:indexOfFruitsArray/edit', (req, res) => {
+	res.render('edit.ejs', {fruit: fruits[req.params.indexOfFruitsArray], index: req.params.indexOfFruitsArray})
+});
+
+router.put('/:indexOfFruitsArray', (req, res) => {
+	if(req.body.readyToEat === 'on') { 
+		req.body.readyToEat = true;
+	} else {
+		req.body.readyToEat = false;
+	}
+	fruits[req.params.indexOfFruitsArray] = req.body;
+	res.redirect('/fruits')
 })
+
 module.exports = router;
